@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🔗 Boss Referral Link Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      color: #00ffcc;
+    }
+    input, button {
+      font-size: 1rem;
+      padding: 0.75rem;
+      margin: 0.5rem;
+      border-radius: 0.5rem;
+      border: none;
+    }
+    input {
+      width: 60%;
+    }
+    button {
+      background-color: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .output {
+      margin-top: 1rem;
+      font-size: 1rem;
+      word-wrap: break-word;
+      color: #FFD700;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔗 Boss Referral Link Generator</h1>
+  <input type="text" id="code" placeholder="Enter your referral code (e.g. BossPetz)" />
+  <button onclick="generateLink()">Generate Link</button>
+  <div class="output" id="output"></div>
+  <button onclick="copyLink()">📋 Copy Link</button>
+
+  <script>
+    let currentLink = '';
+    function generateLink() {
+      const code = document.getElementById("code").value.trim();
+      if (code) {
+        currentLink = `https://bosspetz.github.io/boss-slot-master/ref.html?ref=${code}`;
+        document.getElementById("output").innerText = currentLink;
+      } else {
+        alert("Please enter a referral code.");
+      }
+    }
+
+    function copyLink() {
+      if (!currentLink) {
+        alert("Generate a link first!");
+        return;
+      }
+      navigator.clipboard.writeText(currentLink).then(() => {
+        alert("✅ Link copied to clipboard!");
+      });
+    }
+  </script>
+</body>
+</html>
